@@ -9,7 +9,7 @@ let email;
 let password;
 let confPassword;
 let submit;
-let stength;
+let strength;
 
 function bindEvents() {
     console.log('bindEvents called')
@@ -26,7 +26,7 @@ function bindEvents() {
 
     password = document.getElementById('password');
     // password.addEventListener('keyup', checkPasswordStrength)
-    password.addEventListener('change', checkPasswordStrength)
+    // password.addEventListener('change', checkPasswordStrength)
 
     confPassword = document.getElementById('confirm-password');
     confPassword.addEventListener('blur', matchPassword)
@@ -63,19 +63,22 @@ function checkPasswordStrength() {
     if(strongPassword.test(password.value)) {
         password.style.border = '1px solid green';
         // console.log('Password Strength is Strong...');
-        alert('Password Strength is Strong...');
-        stength = "Strong";
+        alert(` Password Matched
+        Password Strength is Strong...`);
+        strength = "Strong";
     }
     else if(mediumPassword.test(password.value)) {
         password.style.border = '1px solid yellow';
-        alert('Password Strength is Medium...');
+        alert(` Password Matched
+        Password Strength is Medium...`);
         // console.log('Password Strength is Medium...');
-        stength = "Medium";
+        strength = "Medium";
 
     }
     else {
         password.style.border = '1px solid orangee';
-        alert('Password Strength is Weak...');
+        alert(` Password Matched
+        Password Strength is Weak...`)
         // console.log('Password Strength is Weak...');
         strength = "Weak";
     }
@@ -83,7 +86,11 @@ function checkPasswordStrength() {
 
 function matchPassword() {
     if(password.value === confPassword.value) {
-        alert('Password Match');
+        // alert('Password Match');
+    // /password.addEventListener('change', checkPasswordStrength)
+    checkPasswordStrength();
+
+        
     }
     else {
         alert("Password Does not match");
